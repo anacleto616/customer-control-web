@@ -1,0 +1,19 @@
+<main class="login-container">
+  <h1>Login</h1>
+  <form [formGroup]="form" class="form-container">
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input matInput type="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+
+    <button class="login-button" type="submit">Entrar</button>
+  </form>
+
+  <a mat-button [routerLink]="['/register']"
+    >Clique aqui para criar uma conta</a
+  >
+</main>

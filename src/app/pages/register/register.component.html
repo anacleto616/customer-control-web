@@ -1,0 +1,21 @@
+<main class="register-container">
+  <h1>Cadastrar</h1>
+  <form [formGroup]="form" class="form-container">
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input matInput type="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+
+    <button class="register-button" type="submit">Criar Conta</button>
+  </form>
+
+  <a mat-button [routerLink]="['/login']">Cancelar</a>
+</main>

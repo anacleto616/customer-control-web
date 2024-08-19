@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      @for (column of columns; track $index) {
+        <th>{{ column }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (customer of customers(); track customer.id) {
+      <tr>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.paidInvoices }}</td>
+        <td>{{ customer.openInvoices }}</td>
+        <td>{{ customer.overdueInvoices }}</td>
+        <td><mat-icon>edit</mat-icon></td>
+        <td><mat-icon>delete</mat-icon></td>
+        <td>
+          <a mat-raised-button [routerLink]="['/invoices']">Cobranças</a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
