@@ -1,13 +1,13 @@
 <main class="login-container">
   <h1>Login</h1>
-  <form [formGroup]="form" class="form-container">
+  <form [formGroup]="form" (ngSubmit)="onLogin()" class="form-container">
     <mat-form-field>
       <mat-label>E-mail</mat-label>
-      <input matInput type="email" />
+      <input matInput type="email" formControlName="email" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Senha</mat-label>
-      <input matInput type="password" />
+      <input matInput type="password" formControlName="password" />
     </mat-form-field>
 
     <button class="login-button" type="submit">Entrar</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -8,7 +8,9 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '@services/auth/auth.service';
 import { UserRegister } from '../../shared/types/user-register.type';
 
 @Component({
@@ -25,6 +27,9 @@ import { UserRegister } from '../../shared/types/user-register.type';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnInit {
+  authService = inject(AuthService);
+  matSnackBar = inject(MatSnackBar);
+  router = inject(Router);
   user = signal<UserRegister | null>(null);
   form!: FormGroup;
 
@@ -43,5 +48,14 @@ export class RegisterComponent implements OnInit {
         validators: Validators.required,
       }),
     });
+  }
+
+  onRegisterUser() {
+    const user = this.form.value as UserRegister;
+    this.authService.userResgister(user).subscribe(() => {
+      this.matSnackBar.open('Usuário cadastrado com sucesso!', 'X');
+    });
+
+    this.router.navigateByUrl('/');
   }
 }
