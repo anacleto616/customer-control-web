@@ -9,7 +9,7 @@ import { UserRegister } from '../../types/user-register.type';
 })
 export class AuthService {
   private readonly apiUrlEndpoint = `${environment.apiUrl}/users`;
-  httpClient = inject(HttpClient);
+  private httpClient = inject(HttpClient);
 
   userResgister(user: UserRegister) {
     return this.httpClient.post<UserRegister>(

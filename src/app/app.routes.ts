@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 import { CustomersComponent } from './pages/customers/customers.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,9 +18,11 @@ export const routes: Routes = [
   {
     path: 'customers',
     component: CustomersComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'invoices',
     component: InvoicesComponent,
+    canActivate: [authGuard],
   },
 ];

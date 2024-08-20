@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
     const credentials = this.form.value as UserLogin;
     this.authService.login(credentials).subscribe((response) => {
       localStorage.setItem('token', response);
+      this.matSnackBar.open('Login efetuado com sucesso!', 'X');
       this.router.navigate(['/customers']);
     });
   }
