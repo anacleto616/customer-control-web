@@ -2,7 +2,9 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { ConfirmationDialogService } from '@services/confirmation-dialog/confirmation-dialog.service';
 import { CustomerService } from '@services/customer/customer.service';
+import { filter } from 'rxjs';
 import { CustomerDetails } from '../../types/customer-details.type';
 
 @Component({
@@ -14,6 +16,7 @@ import { CustomerDetails } from '../../types/customer-details.type';
 })
 export class CustomersTableComponent implements OnInit {
   customerService = inject(CustomerService);
+  confirmationDialogService = inject(ConfirmationDialogService);
   columns: string[] = ['Nome', 'Pagos', 'Abertos', 'Atrasados', '', '', ''];
 
   customers = signal<CustomerDetails[]>([]);
@@ -26,5 +29,14 @@ export class CustomersTableComponent implements OnInit {
     this.customerService
       .index()
       .subscribe((customer) => this.customers.set(customer));
+  }
+
+  onDelete(id: number) {
+    this.confirmationDialogService
+      .openDialog()
+      .pipe(filter((answer) => answer))
+      .subscribe(() => {
+        this.customerService.delete(id).subscribe(() => this.loadCustomers());
+      });
   }
 }

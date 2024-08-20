@@ -33,29 +33,32 @@ export class LoginComponent implements OnInit {
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
   user = signal<UserRegister | null>(null);
-  form!: FormGroup;
+
+  form = new FormGroup({
+    name: new FormControl<string>(this.user()?.name ?? '', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    email: new FormControl<string>(this.user()?.email ?? '', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    password: new FormControl<string>(this.user()?.password ?? '', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+  });
 
   ngOnInit() {
-    this.form = new FormGroup({
-      name: new FormControl<string>(this.user()?.name ?? '', {
-        nonNullable: true,
-        validators: Validators.required,
-      }),
-      email: new FormControl<string>(this.user()?.email ?? '', {
-        nonNullable: true,
-        validators: Validators.required,
-      }),
-      password: new FormControl<string>(this.user()?.password ?? '', {
-        nonNullable: true,
-        validators: Validators.required,
-      }),
-    });
+    const token = localStorage.getItem('customer_control_token');
+
+    if (token) this.router.navigate(['/customers']);
   }
 
   onLogin() {
     const credentials = this.form.value as UserLogin;
     this.authService.login(credentials).subscribe((response) => {
-      localStorage.setItem('token', response);
+      localStorage.setItem('customer_control_token', response);
       this.matSnackBar.open('Login efetuado com sucesso!', 'X');
       this.router.navigate(['/customers']);
     });

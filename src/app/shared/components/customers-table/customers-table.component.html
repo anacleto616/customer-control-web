@@ -13,8 +13,14 @@
         <td>{{ customer.paidInvoices }}</td>
         <td>{{ customer.openInvoices }}</td>
         <td>{{ customer.overdueInvoices }}</td>
-        <td><mat-icon>edit</mat-icon></td>
-        <td><mat-icon>delete</mat-icon></td>
+        <td>
+          <button><mat-icon>edit</mat-icon></button>
+        </td>
+        <td>
+          <button (click)="onDelete(customer.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
         <td>
           <a mat-raised-button [routerLink]="['/invoices']">Cobranças</a>
         </td>

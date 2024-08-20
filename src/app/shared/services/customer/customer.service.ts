@@ -13,4 +13,8 @@ export class CustomerService {
   index() {
     return this.httpClient.get<CustomerDetails[]>(`${this.apiUrlEndpoint}`);
   }
+
+  delete(id: number) {
+    return this.httpClient.delete(`${this.apiUrlEndpoint}/${id}`);
+  }
 }

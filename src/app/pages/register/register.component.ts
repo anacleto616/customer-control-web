@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -26,29 +26,26 @@ import { UserRegister } from '../../shared/types/user-register.type';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   authService = inject(AuthService);
   matSnackBar = inject(MatSnackBar);
   router = inject(Router);
   user = signal<UserRegister | null>(null);
-  form!: FormGroup;
 
-  ngOnInit() {
-    this.form = new FormGroup({
-      name: new FormControl<string>(this.user()?.name ?? '', {
-        nonNullable: true,
-        validators: Validators.required,
-      }),
-      email: new FormControl<string>(this.user()?.email ?? '', {
-        nonNullable: true,
-        validators: Validators.required,
-      }),
-      password: new FormControl<string>(this.user()?.password ?? '', {
-        nonNullable: true,
-        validators: Validators.required,
-      }),
-    });
-  }
+  form = new FormGroup({
+    name: new FormControl<string>(this.user()?.name ?? '', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    email: new FormControl<string>(this.user()?.email ?? '', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+    password: new FormControl<string>(this.user()?.password ?? '', {
+      nonNullable: true,
+      validators: Validators.required,
+    }),
+  });
 
   onRegisterUser() {
     const user = this.form.value as UserRegister;
