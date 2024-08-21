@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { InvoiceRegister } from '../../types/invoice-register.type';
 import { InvoiceResponse } from '../../types/invoice-response.type';
 
 @Injectable({
@@ -14,6 +15,10 @@ export class InvoiceService {
     return this.httpClient.get<InvoiceResponse[]>(
       `${this.apiUrlEndpoint}/all/${customerId}`,
     );
+  }
+
+  store(invoice: InvoiceRegister) {
+    return this.httpClient.post(this.apiUrlEndpoint, invoice);
   }
 
   delete(id: number) {
