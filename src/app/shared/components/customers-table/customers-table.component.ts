@@ -59,7 +59,7 @@ export class CustomersTableComponent implements OnInit {
       });
   }
 
-  openDialog(customerId: number) {
+  openEdit(customerId: number) {
     this.customerService
       .getOne(customerId)
       .pipe(filter((response: CustomerSummary) => !!response))

@@ -21,7 +21,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'invoices',
+    path: 'invoices/:customerId',
     component: InvoicesComponent,
     canActivate: [authGuard],
   },

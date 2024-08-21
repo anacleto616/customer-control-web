@@ -11,7 +11,7 @@ import { CustomerSummary } from '../../types/customer-summary.type';
 })
 export class CustomerService {
   private readonly apiUrlEndpoint = `${environment.apiUrl}/customers`;
-  httpClient = inject(HttpClient);
+  private httpClient = inject(HttpClient);
 
   index(userId: number) {
     return this.httpClient.get<CustomerDetails[]>(

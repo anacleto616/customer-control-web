@@ -14,7 +14,7 @@
         <td>{{ customer.openInvoices }}</td>
         <td>{{ customer.overdueInvoices }}</td>
         <td>
-          <button (click)="openDialog(customer.id)">
+          <button (click)="openEdit(customer.id)">
             <mat-icon>edit</mat-icon>
           </button>
         </td>
@@ -24,7 +24,9 @@
           </button>
         </td>
         <td>
-          <a mat-raised-button [routerLink]="['/invoices']">Cobranças</a>
+          <a mat-raised-button [routerLink]="['/invoices', customer.id]"
+            >Cobranças</a
+          >
         </td>
       </tr>
     }

@@ -15,9 +15,9 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-confirmation-dialog',
   template: `
-    <h2 mat-dialog-title>Deletar cliente</h2>
+    <h2 mat-dialog-title>Deletar</h2>
     <mat-dialog-content>
-      Tem certeza que quer deletar esse cliente?
+      Tem certeza que quer deletar esse dado?
     </mat-dialog-content>
     <mat-dialog-actions>
       <button mat-button (click)="onNo()">Não</button>
