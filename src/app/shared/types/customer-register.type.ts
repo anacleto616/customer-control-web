@@ -3,4 +3,5 @@ export interface CustomerRegister {
   document: string;
   phone: string;
   address: string;
+  userId: number;
 }

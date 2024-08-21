@@ -5,12 +5,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { CustomerRegister } from '../../types/customer-register.type';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { CustomerRegister } from '../../types/customer-register.type';
 
 @Component({
   selector: 'app-customer-dialog',
@@ -43,7 +43,7 @@ export class CustomerDialogComponent {
       nonNullable: true,
       validators: [Validators.required, Validators.pattern(/^\d{10,11}$/)],
     }),
-    address: new FormControl<string>(this.customer()?.phone ?? '', {
+    address: new FormControl<string>(this.customer()?.address ?? '', {
       nonNullable: true,
       validators: [Validators.required],
     }),

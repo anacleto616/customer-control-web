@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@services/auth/auth.service';
+import { LoginResponse } from '../../shared/types/login-reponse.type';
 import { UserLogin } from '../../shared/types/user-login.type';
 import { UserRegister } from '../../shared/types/user-register.type';
 
@@ -57,8 +58,9 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     const credentials = this.form.value as UserLogin;
-    this.authService.login(credentials).subscribe((response) => {
-      localStorage.setItem('customer_control_token', response);
+    this.authService.login(credentials).subscribe((response: LoginResponse) => {
+      localStorage.setItem('customer_control_token', response.token);
+      this.authService.setUserId(response.userId);
       this.matSnackBar.open('Login efetuado com sucesso!', 'X');
       this.router.navigate(['/customers']);
     });
