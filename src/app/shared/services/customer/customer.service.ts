@@ -1,20 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { map } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { CustomerDetails } from '../../types/customer-details.type';
 import { CustomerRegister } from '../../types/customer-register.type';
+import { CustomerSummary } from '../../types/customer-summary.type';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
-  private readonly apiUrlEndpoint = `${environment.apiUrl}/customers/all`;
+  private readonly apiUrlEndpoint = `${environment.apiUrl}/customers`;
   httpClient = inject(HttpClient);
 
   index(userId: number) {
     return this.httpClient.get<CustomerDetails[]>(
-      `${this.apiUrlEndpoint}/${userId}`,
+      `${this.apiUrlEndpoint}/all/${userId}`,
     );
+  }
+
+  getOne(id: number) {
+    return this.httpClient
+      .get<CustomerSummary>(`${this.apiUrlEndpoint}/${id}`)
+      .pipe(map((response: CustomerSummary) => response));
   }
 
   store(customer: CustomerRegister) {

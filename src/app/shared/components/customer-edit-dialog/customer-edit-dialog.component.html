@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Editar Cliente</h1>
+<div mat-dialog-content>
+  <form [formGroup]="customerForm" class="customer-form-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" />
+      @if (customerForm.get("name")?.hasError("required")) {
+        <mat-error>Nome é obrigatório.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Documento</mat-label>
+      <input matInput formControlName="document" />
+      @if (customerForm.get("document")?.hasError("required")) {
+        <mat-error>Documento é obrigatório.</mat-error>
+      }
+      @if (customerForm.get("document")?.hasError("minlength")) {
+        <mat-error>Documento deve ter pelo menos 11 caracteres.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="phone" />
+      @if (customerForm.get("phone")?.hasError("required")) {
+        <mat-error>Telefone é obrigatório.</mat-error>
+      }
+      @if (customerForm.get("phone")?.hasError("pattern")) {
+        <mat-error>Telefone deve ter 10 ou 11 dígitos.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Endereço</mat-label>
+      <input matInput formControlName="address" />
+      @if (customerForm.get("address")?.hasError("required")) {
+        <mat-error>Endereço é obrigatório.</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="onSave()">Cadastrar</button>
+</div>

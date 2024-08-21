@@ -14,7 +14,9 @@
         <td>{{ customer.openInvoices }}</td>
         <td>{{ customer.overdueInvoices }}</td>
         <td>
-          <button><mat-icon>edit</mat-icon></button>
+          <button (click)="openDialog(customer.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
         </td>
         <td>
           <button (click)="onDelete(customer.id)">

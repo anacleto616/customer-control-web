@@ -27,12 +27,11 @@ export class CustomersComponent {
 
     dialogRef.afterClosed().subscribe((result: CustomerRegister) => {
       if (result) {
-        debugger;
-        this.customerService
-          .store({ ...result, userId: Number(this.userId) })
-          .subscribe(() =>
-            this.matSnackBar.open('Cliente cadastrado com sucesso!', 'X'),
-          );
+        result.userId = Number(this.userId);
+        this.customerService.store(result).subscribe(() => {
+          this.matSnackBar.open('Cliente cadastrado com sucesso!', 'X');
+          window.location.reload();
+        });
       }
     });
   }
