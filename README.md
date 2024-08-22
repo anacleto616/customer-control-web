@@ -1,27 +1,15 @@
 # CustomerControlWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+## Pré requisitos
 
-## Development server
+- Tenha instalado o Node.js (https://nodejs.org/pt)
+- Instale o Angular: `npm i -g @angular/cli`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Como rodar a aplicação
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Obs: execute esses passos após ter feito os passos da api (https://github.com/anacleto616/customer-control)
+- Abra seu terminal e clone o projeto numa pasta de sua preferência: `git clone https://github.com/anacleto616/customer-control-web.git`
+- Entre na pasta: `cd customer-control-web`
+- Instale as dependências: `npm ci`
+- Execute o projeto: `npm start`
+- Abra o navegador na porta: `http://localhost:4200`
