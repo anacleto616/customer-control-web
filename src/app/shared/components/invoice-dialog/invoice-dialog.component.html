@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Cadastro de Cobranças</h1>
+<div mat-dialog-content>
+  <form [formGroup]="invoiceForm" class="invoice-form-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <input matInput formControlName="description" />
+      @if (invoiceForm.get("description")?.hasError("required")) {
+        <mat-error>Descrição é obrigatório.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valor</mat-label>
+      <input matInput formControlName="amount" />
+      @if (invoiceForm.get("amount")?.hasError("required")) {
+        <mat-error>Valor é obrigatório.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vencimento</mat-label>
+      <input matInput formControlName="dueDate" />
+      @if (invoiceForm.get("dueDate")?.hasError("required")) {
+        <mat-error>Data de vencimento é obrigatória.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Pago</mat-label>
+      <input matInput formControlName="paid" />
+      @if (invoiceForm.get("paid")?.hasError("required")) {
+        <mat-error>Pago é obrigatório.</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="onSave()">Cadastrar</button>
+</div>
