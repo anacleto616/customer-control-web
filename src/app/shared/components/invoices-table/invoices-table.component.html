@@ -15,12 +15,12 @@
           <td>{{ invoice.amount | currency: "BRL" }}</td>
           <td>{{ invoice.dueDate | date: "dd/mm/yyyy" }}</td>
           <td>
-            <button>
+            <button class="edit-button">
               <mat-icon>edit</mat-icon>
             </button>
           </td>
           <td>
-            <button (click)="onDelete(invoice.id)">
+            <button class="del-button" (click)="onDelete(invoice.id)">
               <mat-icon>delete</mat-icon>
             </button>
           </td>

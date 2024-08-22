@@ -66,3 +66,19 @@ body {
 button {
   cursor: pointer;
 }
+
+.del-button,
+.edit-button {
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.del-button {
+  background-color: #f04040;
+}
+
+.edit-button {
+  background-color: #2775db;
+}

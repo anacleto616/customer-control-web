@@ -6,8 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@services/confirmation-dialog/confirmation-dialog.service';
 import { InvoiceService } from '@services/invoice/invoice.service';
-import { InvoiceResponse } from '../../types/invoice-response.type';
 import { filter } from 'rxjs';
+import { InvoiceResponse } from '../../types/invoice-response.type';
 
 @Component({
   selector: 'app-invoices-table',
@@ -38,8 +38,6 @@ export class InvoicesTableComponent implements OnInit {
   loadInvoices(customerId: number): void {
     this.invoiceService.index(customerId).subscribe({
       next: (invoice) => {
-        console.log(invoice);
-
         this.invoices.set(invoice);
       },
       error: () => this.matSnackBar.open('Erro ao carregar faturas.', 'X'),

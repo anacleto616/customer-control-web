@@ -1,34 +1,38 @@
-<table>
-  <thead>
-    <tr>
-      @for (column of columns; track $index) {
-        <th>{{ column }}</th>
-      }
-    </tr>
-  </thead>
-  <tbody>
-    @for (customer of customers(); track customer.id) {
+@if (customers().length) {
+  <table>
+    <thead>
       <tr>
-        <td>{{ customer.name }}</td>
-        <td>{{ customer.paidInvoices }}</td>
-        <td>{{ customer.openInvoices }}</td>
-        <td>{{ customer.overdueInvoices }}</td>
-        <td>
-          <button (click)="openEdit(customer.id)">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </td>
-        <td>
-          <button (click)="onDelete(customer.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-        <td>
-          <a mat-raised-button [routerLink]="['/invoices', customer.id]"
-            >Cobranças</a
-          >
-        </td>
+        @for (column of columns; track $index) {
+          <th>{{ column }}</th>
+        }
       </tr>
-    }
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      @for (customer of customers(); track customer.id) {
+        <tr>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.paidInvoices }}</td>
+          <td>{{ customer.openInvoices }}</td>
+          <td>{{ customer.overdueInvoices }}</td>
+          <td>
+            <button class="edit-button" (click)="openEdit(customer.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+          <td>
+            <button class="del-button" (click)="onDelete(customer.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+          <td>
+            <a class="invoices-button" [routerLink]="['/invoices', customer.id]"
+              >Cobranças</a
+            >
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  <h2>Não há cliente cadastrados para este usuário.</h2>
+}
